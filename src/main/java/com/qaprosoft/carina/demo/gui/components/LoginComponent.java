@@ -6,6 +6,7 @@ Popchiyk
 
 import com.qaprosoft.carina.core.foundation.webdriver.decorator.ExtendedWebElement;
 import com.qaprosoft.carina.core.gui.AbstractUIObject;
+import com.qaprosoft.carina.demo.gui.pages.ForgotPage;
 import com.qaprosoft.carina.demo.gui.pages.SignInPage;
 import org.openqa.selenium.SearchContext;
 import org.openqa.selenium.WebDriver;
@@ -70,8 +71,9 @@ public class LoginComponent extends AbstractUIObject {
         loginButton.hover();
     }
 
-    public void clickForgotEmailButton() {
+    public ForgotPage clickForgotEmailButton() {
         forgotEmailButton.click();
+        return new ForgotPage(driver);
     }
 
     public SignInPage loginToAccount(String email, String password) {

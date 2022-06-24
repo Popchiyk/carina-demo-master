@@ -8,6 +8,7 @@ import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
 import com.qaprosoft.carina.demo.gui.components.LoginComponent;
 import com.qaprosoft.carina.demo.gui.pages.AccountPage;
+import com.qaprosoft.carina.demo.gui.pages.ForgotPage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
@@ -38,5 +39,17 @@ public class WebSignInTest implements IAbstractTest {
         pause(1);
     }
 
+    @Test()
+    @MethodOwner(owner = "PopiukRoman")
+    public void testForgotPassword(){
+        HomePage homePage = new HomePage(getDriver());
+        homePage.open();
+        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
+        LoginComponent loginComponent = homePage.getNavBarMenu().openLoginForm();
+        ForgotPage forgotPage = loginComponent.clickForgotEmailButton();
+        Assert.assertTrue(forgotPage.isPageOpened(), "Forgot page is not opened");
+        forgotPage.submitForgotPassword("vayad47535@tagbert.com");
+        pause(2);
+    }
 
 }
