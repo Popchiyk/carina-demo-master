@@ -26,14 +26,22 @@ public class ForgotPage extends AbstractPage {
     public boolean isEmailFieldPresent() {
         return emailTextField.isElementPresent();
     }
+
     public boolean isForgotButtonPresent() {
         return forgotButton.isElementPresent();
     }
 
-    public void clickForgotButton(){forgotButton.click();}
-
-    public ForgotPage submitForgotPassword(String email){
+    public ForgotPage typeEmail(String email){
         emailTextField.type(email);
+        return this;
+    }
+
+    public void clickForgotButton() {
+        forgotButton.click();
+    }
+
+    public ForgotPage submitForgotPassword(String email) {
+        typeEmail(email);
         clickForgotButton();
         return new ForgotPage(driver);
     }

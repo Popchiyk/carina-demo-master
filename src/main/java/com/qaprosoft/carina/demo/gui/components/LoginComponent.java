@@ -40,15 +40,19 @@ public class LoginComponent extends AbstractUIObject {
     public boolean isLoginTitlePresent() {
         return loginTitle.isElementPresent();
     }
+
     public boolean isEmailFieldPresent() {
         return emailTextField.isElementPresent();
     }
+
     public boolean isPasswordFieldPresent() {
         return passwordTextField.isElementPresent();
     }
+
     public boolean isLoginButtonPresent() {
         return loginButton.isElementPresent();
     }
+
     public boolean isForgotEmailButtonPresent() {
         return forgotEmailButton.isElementPresent();
     }
@@ -83,7 +87,7 @@ public class LoginComponent extends AbstractUIObject {
         return new SignInPage(driver);
     }
 
-    public void loginToAccountHoverButtonAndClick(){
+    public void loginToAccountHoverButtonAndClick() {
         hoverLoginButton();
         pause(2);
         clickLoginButton();

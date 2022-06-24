@@ -47,8 +47,6 @@ public class HomePage extends AbstractPage {
     @FindBy(xpath = "//a[@class='signup-icon no-margin-right']")
     private NavBarMenu navBarMenu;
 
-
-
     public HomePage(WebDriver driver) {
         super(driver);
         setUiLoadedMarker(newsColumn);
