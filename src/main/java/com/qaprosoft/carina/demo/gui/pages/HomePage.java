@@ -44,7 +44,7 @@ public class HomePage extends AbstractPage {
     @FindBy(className = "news-column-index")
     private ExtendedWebElement newsColumn;
 
-    @FindBy(xpath = "//a[@class='signup-icon no-margin-right']")
+    @FindBy(id = "social-connect")
     private NavBarMenu navBarMenu;
 
     public HomePage(WebDriver driver) {

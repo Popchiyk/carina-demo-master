@@ -15,7 +15,7 @@ import org.openqa.selenium.support.FindBy;
 public class LoginComponent extends AbstractUIObject {
 
     @FindBy(xpath = "//p[text()='Login']")
-    private ExtendedWebElement loginTitle;
+    private ExtendedWebElement loginField;//*title
 
     @FindBy(id = "email")
     private ExtendedWebElement emailTextField;
@@ -38,7 +38,7 @@ public class LoginComponent extends AbstractUIObject {
     }
 
     public boolean isLoginTitlePresent() {
-        return loginTitle.isElementPresent();
+        return loginField.isElementPresent();
     }
 
     public boolean isEmailFieldPresent() {
@@ -67,12 +67,14 @@ public class LoginComponent extends AbstractUIObject {
         return this;
     }
 
-    public void clickLoginButton() {
+    public LoginComponent clickLoginButton() {
         loginButton.click();
+        return this;
     }
 
-    public void hoverLoginButton() {
+    public LoginComponent hoverLoginButton() {
         loginButton.hover();
+        return this;
     }
 
     public ForgotPage clickForgotEmailButton() {

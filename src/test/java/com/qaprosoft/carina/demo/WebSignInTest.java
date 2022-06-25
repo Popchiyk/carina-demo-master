@@ -12,7 +12,7 @@ import com.qaprosoft.carina.demo.gui.pages.ForgotPage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-
+//rename class and add all test in this
 public class WebSignInTest implements IAbstractTest {
     @Test()
     @MethodOwner(owner = "PopiukRoman")
@@ -25,9 +25,9 @@ public class WebSignInTest implements IAbstractTest {
         Assert.assertTrue(loginComponent.isLoginButtonPresent(), "Button login is not present");
         Assert.assertTrue(loginComponent.isForgotEmailButtonPresent(), "Forgot email button is not present");
         Assert.assertTrue(loginComponent.isPasswordFieldPresent(), "Password field is not present");
-        Assert.assertTrue(loginComponent.isLoginTitlePresent(), "Login title is not present");
-        loginComponent.loginToAccountHoverButtonAndClick();
-        pause(2);
+        Assert.assertTrue(loginComponent.isLoginTitlePresent(), "Login field is not present");
+        //loginComponent.loginToAccountHoverButtonAndClick(); write in test
+        //pause(2);
         loginComponent.loginToAccount("asdadsdas", "1");
         pause(2);
         loginComponent.loginToAccount("asdadsdas@gmail.com", "1");
