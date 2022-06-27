@@ -6,17 +6,21 @@ Popchiyk
 
 import com.qaprosoft.carina.core.foundation.IAbstractTest;
 import com.qaprosoft.carina.core.foundation.utils.ownership.MethodOwner;
+import com.qaprosoft.carina.core.foundation.utils.tag.Priority;
+import com.qaprosoft.carina.core.foundation.utils.tag.TestPriority;
 import com.qaprosoft.carina.demo.gui.components.LoginComponent;
 import com.qaprosoft.carina.demo.gui.pages.AccountPage;
 import com.qaprosoft.carina.demo.gui.pages.ForgotPage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
+import com.qaprosoft.carina.demo.gui.pages.SignUpPage;
 import org.testng.Assert;
 import org.testng.annotations.Test;
-//rename class and add all test in this
-public class WebSignInTest implements IAbstractTest {
+
+public class WebAccountTest implements IAbstractTest {
     @Test()
     @MethodOwner(owner = "PopiukRoman")
-    public void testLoginForm() {
+    @TestPriority(Priority.P2)
+    public void testLoginToAccount() {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
@@ -26,21 +30,18 @@ public class WebSignInTest implements IAbstractTest {
         Assert.assertTrue(loginComponent.isForgotEmailButtonPresent(), "Forgot email button is not present");
         Assert.assertTrue(loginComponent.isPasswordFieldPresent(), "Password field is not present");
         Assert.assertTrue(loginComponent.isLoginTitlePresent(), "Login field is not present");
-        //loginComponent.loginToAccountHoverButtonAndClick(); write in test
-        //pause(2);
+        Assert.assertNotNull(loginComponent.hoverLoginButton(),"Don`t hover to login button");
+        Assert.assertNotNull(loginComponent.clickLoginButton(),"Don`t click to login button" );
         loginComponent.loginToAccount("asdadsdas", "1");
-        pause(2);
         loginComponent.loginToAccount("asdadsdas@gmail.com", "1");
-        pause(2);
         loginComponent.loginToAccount("vayad47535@tagbert.com", "123456");
-        pause(3);
         AccountPage accountPage = homePage.getNavBarMenu().openAccountPage();
         Assert.assertTrue(accountPage.isPageOpened(), "Account page is not opened");
-        pause(1);
     }
 
     @Test()
     @MethodOwner(owner = "PopiukRoman")
+    @TestPriority(Priority.P3)
     public void testForgotPassword() {
         HomePage homePage = new HomePage(getDriver());
         homePage.open();
@@ -52,6 +53,23 @@ public class WebSignInTest implements IAbstractTest {
         Assert.assertTrue(forgotPage.isForgotButtonPresent(), "Button forgot is not present");
         forgotPage.submitForgotPassword("vayad47535@tagbert.com");
         pause(2);
+    }
+
+    @Test()
+    @MethodOwner(owner = "Popiuk Roman")
+    @TestPriority(Priority.P1)
+    public void testSignUp() {
+        HomePage homePage = new HomePage(getDriver());
+        homePage.open();
+        Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
+        SignUpPage signUpPage = homePage.getNavBarMenu().clickSignUpButton();
+        Assert.assertTrue(signUpPage.isEmailTitlePresent(), "Email field is not present");
+        Assert.assertTrue(signUpPage.isSighUpButtonPresent(), "Button sign up is not present");
+        Assert.assertTrue(signUpPage.isCheckBoxAgreeRulePresent(), "Checkbox agree rule is not present");
+        Assert.assertTrue(signUpPage.isCheckBoxAgreeOldPresent(), "Checkbox agree old is not present");
+        Assert.assertTrue(signUpPage.isPasswordTitlePresent(), "Password field is not present");
+        Assert.assertTrue(signUpPage.isLoginTitlePresent(), "Login title is not present");
+        signUpPage.signUpAccount("qwerty1337", "qwerty1337@gmail.com", "qwerty321");
     }
 
 }

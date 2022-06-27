@@ -15,13 +15,13 @@ import org.openqa.selenium.support.FindBy;
 public class LoginComponent extends AbstractUIObject {
 
     @FindBy(xpath = "//p[text()='Login']")
-    private ExtendedWebElement loginField;//*title
+    private ExtendedWebElement loginTitle;
 
     @FindBy(id = "email")
-    private ExtendedWebElement emailTextField;
+    private ExtendedWebElement emailTextTitle;
 
     @FindBy(id = "upass")
-    private ExtendedWebElement passwordTextField;
+    private ExtendedWebElement passwordTextTitle;
 
     @FindBy(id = "nick-submit")
     private ExtendedWebElement loginButton;
@@ -38,15 +38,15 @@ public class LoginComponent extends AbstractUIObject {
     }
 
     public boolean isLoginTitlePresent() {
-        return loginField.isElementPresent();
+        return loginTitle.isElementPresent();
     }
 
     public boolean isEmailFieldPresent() {
-        return emailTextField.isElementPresent();
+        return emailTextTitle.isElementPresent();
     }
 
     public boolean isPasswordFieldPresent() {
-        return passwordTextField.isElementPresent();
+        return passwordTextTitle.isElementPresent();
     }
 
     public boolean isLoginButtonPresent() {
@@ -58,12 +58,12 @@ public class LoginComponent extends AbstractUIObject {
     }
 
     public LoginComponent typeEmail(String email) {
-        emailTextField.type(email);
+        emailTextTitle.type(email);
         return this;
     }
 
     public LoginComponent typePassword(String password) {
-        passwordTextField.type(password);
+        passwordTextTitle.type(password);
         return this;
     }
 
@@ -84,15 +84,13 @@ public class LoginComponent extends AbstractUIObject {
 
     public SignInPage loginToAccount(String email, String password) {
         typeEmail(email);
+        pause(1);
         typePassword(password);
+        pause(1);
         clickLoginButton();
+        pause(2);
         return new SignInPage(driver);
     }
 
-    public void loginToAccountHoverButtonAndClick() {
-        hoverLoginButton();
-        pause(2);
-        clickLoginButton();
-        pause(2);
-    }
+
 }

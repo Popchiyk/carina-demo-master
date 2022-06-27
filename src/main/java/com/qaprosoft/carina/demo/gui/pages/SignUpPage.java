@@ -86,8 +86,8 @@ public class SignUpPage extends AbstractPage {
     }
 
     public SignUpPage signUpAccount(String login, String email, String password) {
-        typeEmail(email);
         typeLogin(login);
+        typeEmail(email);
         typePassword(password);
         clickCheckBoxAgreeRule();
         clickCheckBoxAgreeOld();

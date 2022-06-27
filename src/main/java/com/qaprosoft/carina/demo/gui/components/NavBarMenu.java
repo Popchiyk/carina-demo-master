@@ -25,7 +25,6 @@ public class NavBarMenu extends AbstractUIObject {
 
     public NavBarMenu(WebDriver driver) {
         super(driver);
-        setPageURL("account.php3");
     }
 
     public NavBarMenu(WebDriver driver, SearchContext searchContext) {
