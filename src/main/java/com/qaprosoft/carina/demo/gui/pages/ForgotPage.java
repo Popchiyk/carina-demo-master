@@ -41,8 +41,10 @@ public class ForgotPage extends AbstractPage {
     }
 
     public ForgotPage submitForgotPassword(String email) {
+        waitForJSToLoad();
         typeEmail(email);
         clickForgotButton();
+        pause(2);
         return new ForgotPage(driver);
     }
 

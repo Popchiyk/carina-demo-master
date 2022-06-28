@@ -13,6 +13,8 @@ import com.qaprosoft.carina.demo.gui.pages.AccountPage;
 import com.qaprosoft.carina.demo.gui.pages.ForgotPage;
 import com.qaprosoft.carina.demo.gui.pages.HomePage;
 import com.qaprosoft.carina.demo.gui.pages.SignUpPage;
+import org.apache.commons.lang3.RandomStringUtils;
+import org.apache.commons.lang3.RandomUtils;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
@@ -31,7 +33,7 @@ public class WebAccountTest implements IAbstractTest {
         Assert.assertTrue(loginComponent.isPasswordFieldPresent(), "Password field is not present");
         Assert.assertTrue(loginComponent.isLoginTitlePresent(), "Login field is not present");
         Assert.assertNotNull(loginComponent.hoverLoginButton(),"Don`t hover to login button");
-        Assert.assertNotNull(loginComponent.clickLoginButton(),"Don`t click to login button" );
+        Assert.assertNotNull(loginComponent.isClickableLoginButton(),"Don`t click to login button" );
         loginComponent.loginToAccount("asdadsdas", "1");
         loginComponent.loginToAccount("asdadsdas@gmail.com", "1");
         loginComponent.loginToAccount("vayad47535@tagbert.com", "123456");
@@ -52,7 +54,6 @@ public class WebAccountTest implements IAbstractTest {
         Assert.assertTrue(forgotPage.isEmailFieldPresent(), "Email field is not present");
         Assert.assertTrue(forgotPage.isForgotButtonPresent(), "Button forgot is not present");
         forgotPage.submitForgotPassword("vayad47535@tagbert.com");
-        pause(2);
     }
 
     @Test()
@@ -63,13 +64,16 @@ public class WebAccountTest implements IAbstractTest {
         homePage.open();
         Assert.assertTrue(homePage.isPageOpened(), "Home page is not opened");
         SignUpPage signUpPage = homePage.getNavBarMenu().clickSignUpButton();
+        Assert.assertTrue(signUpPage.isPageOpened(), "SignUp page is not opened");
         Assert.assertTrue(signUpPage.isEmailTitlePresent(), "Email field is not present");
         Assert.assertTrue(signUpPage.isSighUpButtonPresent(), "Button sign up is not present");
         Assert.assertTrue(signUpPage.isCheckBoxAgreeRulePresent(), "Checkbox agree rule is not present");
         Assert.assertTrue(signUpPage.isCheckBoxAgreeOldPresent(), "Checkbox agree old is not present");
         Assert.assertTrue(signUpPage.isPasswordTitlePresent(), "Password field is not present");
         Assert.assertTrue(signUpPage.isLoginTitlePresent(), "Login title is not present");
-        signUpPage.signUpAccount("qwerty1337", "qwerty1337@gmail.com", "qwerty321");
+        signUpPage.signUpAccount(RandomStringUtils.randomAlphanumeric(5), RandomStringUtils.randomAlphanumeric(8)+"@gmail.com",
+                RandomStringUtils.randomNumeric(8));
+
     }
 
 }

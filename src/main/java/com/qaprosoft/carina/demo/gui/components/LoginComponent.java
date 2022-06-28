@@ -77,6 +77,11 @@ public class LoginComponent extends AbstractUIObject {
         return this;
     }
 
+    public LoginComponent isClickableLoginButton() {
+        loginButton.isClickable();
+        return this;
+    }
+
     public ForgotPage clickForgotEmailButton() {
         forgotEmailButton.click();
         return new ForgotPage(driver);

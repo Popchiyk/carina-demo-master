@@ -86,12 +86,14 @@ public class SignUpPage extends AbstractPage {
     }
 
     public SignUpPage signUpAccount(String login, String email, String password) {
+        waitForJSToLoad();
         typeLogin(login);
         typeEmail(email);
         typePassword(password);
         clickCheckBoxAgreeRule();
         clickCheckBoxAgreeOld();
         clickSighUpButton();
+        pause(2);
         return new SignUpPage(driver);
     }
 }
